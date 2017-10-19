@@ -103,6 +103,9 @@ def getResults(excelFile, sampleData):
 
     resData.dropna(how = "all", inplace=True)
     
+    # Set any unknown CT values to 0
+    resData['CT'] = [CT if CT != "Undetermined" else 0 for CT in resData.CT]
+    
     resData = coerceDataTypes(resData, strCols, intCols, floatCols)
     
     resDataAnno = resData.merge(sampleData, on = 'Well', how = "inner")
