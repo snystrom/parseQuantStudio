@@ -1,6 +1,5 @@
 #! /usr/bin/python3
 
-import sys
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
@@ -149,12 +148,11 @@ def plotMeltCurve(meltCurveData):
     meltCurve = meltCurve.map(plt.scatter, "Reading", "Derivative")
     return(meltCurve)
     
-def main():
+def _main(excelFile):
     """
     Usage: python3 parseQuantStudio.py <QuantStudioOutput>.xls
     Requires the following tables to be output:
     """
-    excelFile = sys.argv[1]
     sampleData = getSampleData(excelFile)
     
     # Amplification curve data:
@@ -181,7 +179,8 @@ def main():
     pass
 
 if __name__ == "__main__":
-    main()
+    import sys
+    _main(sys.argv[1])
 
 
 
