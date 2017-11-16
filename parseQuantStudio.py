@@ -125,6 +125,18 @@ def plotCT(resultsData):
     CT.ax.legend(loc = 2, bbox_to_anchor=(1.05, 1), borderaxespad=0.)
     return(CT)
 
+def plotRQ(resultsData):
+    """
+    returns barplot of RQ values for each sample & target
+    """
+    #TODO: Error checking for valid cols
+    sns.set_context("poster")
+    CT = sns.factorplot(data = resultsData,
+        x = "Target_Name", y = "RQ", hue = "Sample_Name", 
+        kind = "bar", size = 8, aspect = 2, legend = False)
+    CT.ax.legend(loc = 2, bbox_to_anchor=(1.05, 1), borderaxespad=0.)
+    return(CT)
+
 def plotAmplificationCurve(ampData):
     """
     Single plot of all amplification curve data
@@ -147,6 +159,7 @@ def plotMeltCurve(meltCurveData):
         size = 7.5, aspect = 2)
     meltCurve = meltCurve.map(plt.scatter, "Reading", "Derivative")
     return(meltCurve)
+
     
 def _main(excelFile):
     """
@@ -167,6 +180,10 @@ def _main(excelFile):
     # Make CT plot
     CT = plotCT(resData) 
     CT.savefig('CT_Values.png')
+    
+    # Make RQ plot
+    RQ = plotRQ(resData) 
+    RQ.savefig('RQ_Values.png')
 
     # Amplification Plot
     ampCurve = plotAmplificationCurve(ampData)
