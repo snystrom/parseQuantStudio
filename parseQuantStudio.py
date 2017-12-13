@@ -120,8 +120,9 @@ def plotCT(resultsData):
     #TODO: Error checking for valid cols
     sns.set_context("poster")
     CT = sns.factorplot(data = resultsData,
-        x = "Target_Name", y = "CT", hue = "Sample_Name", 
-        kind = "bar", size = 8, aspect = 2, legend = False)
+        x = "Sample_Name", y = "CT", hue = "Target_Name", 
+        kind = "point", size = 8, aspect = 2, legend = False)
+        #kind = "bar", size = 8, aspect = 2, legend = False)
     CT.ax.legend(loc = 2, bbox_to_anchor=(1.05, 1), borderaxespad=0.)
     return(CT)
 
@@ -131,11 +132,11 @@ def plotRQ(resultsData):
     """
     #TODO: Error checking for valid cols
     sns.set_context("poster")
-    CT = sns.factorplot(data = resultsData,
+    RQ = sns.factorplot(data = resultsData,
         x = "Target_Name", y = "RQ", hue = "Sample_Name", 
         kind = "bar", size = 8, aspect = 2, legend = False)
-    CT.ax.legend(loc = 2, bbox_to_anchor=(1.05, 1), borderaxespad=0.)
-    return(CT)
+    RQ.ax.legend(loc = 2, bbox_to_anchor=(1.05, 1), borderaxespad=0.)
+    return(RQ)
 
 def plotAmplificationCurve(ampData):
     """
