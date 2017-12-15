@@ -121,7 +121,7 @@ def plotCT(resultsData):
     sns.set_context("poster")
     CT = sns.factorplot(data = resultsData,
         x = "Sample_Name", y = "CT", hue = "Target_Name", 
-        kind = "bar", size = 8, aspect = 2, legend = False)
+        kind = "strip", size = 8, aspect = 2, legend = False)
     CT.ax.legend(loc = 2, bbox_to_anchor=(1.05, 1), borderaxespad=0.)
     return(CT)
 
