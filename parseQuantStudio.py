@@ -170,12 +170,15 @@ def _main(excelFile):
     
     # Amplification curve data:
     ampData = getAmplificationData(excelFile, sampleData)
+    ampData.to_csv("AmplificationData.tsv", sep = "\t", index = False)
     
     # Melt curve data: 
     meltCurveData = getMeltCurveData(excelFile, sampleData)
+    meltCurveData.to_csv("MeltCurveData.tsv", sep = "\t", index = False)
     
     # Results
     resData = getResults(excelFile, sampleData)
+    resData.to_csv("Results.tsv", sep = "\t", index = False)
     
     # Make CT plot
     CT = plotCT(resData) 
